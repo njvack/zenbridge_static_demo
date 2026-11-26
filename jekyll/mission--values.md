@@ -4,8 +4,8 @@ permalink: /mission--values.html
 sections:
   - heading: Our mission
     text: >-
-      Our missions are to be a welcoming place for people interested in joining
-      a supportive meditation community, to engage in and teach the practice of
+      Our mission is to be a welcoming place for people interested in joining a
+      supportive meditation community, to engage in and teach the practice of
       meditation and Zen Buddhism, and to reach out to the surrounding community
       through classes and retreats.
 
