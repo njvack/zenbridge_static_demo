@@ -55,10 +55,10 @@ components:
             type: select
             options:
               values:
-                - { name: right, label: Beside the text, on the right }
-                - { name: left, label: Beside the text, on the left }
-                - { name: above, label: Above the text }
-                - { name: below, label: Below the text }
+                - { name: right, label: "Photo on the right, text beside it" }
+                - { name: left, label: "Photo on the left, text beside it" }
+                - { name: above, label: "Photo above the text" }
+                - { name: below, label: "Photo below the text" }
       - name: feature
         label: Built-in content
         type: select
@@ -148,6 +148,6 @@ content:
         fields:
           - { name: name, label: Place name, type: string }
           - { name: street, label: Street, type: string }
-          - { name: city, label: City, state and ZIP, type: string }
+          - { name: city, label: "City, state and ZIP", type: string }
           - { name: map_url, label: Google Maps link, type: string }
       - { name: ein, label: EIN, type: string }
