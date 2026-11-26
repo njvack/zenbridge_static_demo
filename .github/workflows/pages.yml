@@ -1,12 +1,11 @@
-# Builds the Jekyll site in jekyll/ and publishes it to GitHub Pages,
-# with the Weebly snapshot in current/ served alongside it at /current/.
-# One-time setup: Settings > Pages > Build and deployment > Source: "GitHub Actions".
-name: Deploy Jekyll site to Pages
+# Publishes the Weebly snapshot in current/ to GitHub Pages.
+# The Jekyll rebuild lives on the jekyll-parking branch.
+name: Deploy snapshot to Pages
 
 on:
   push:
     branches: [main]
-    paths: ["jekyll/**", "current/**", ".github/workflows/pages.yml"]
+    paths: ["current/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -19,35 +18,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: jekyll
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: true
-          working-directory: jekyll
-      - id: pages
-        uses: actions/configure-pages@v5
-      - run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-      - name: Add the Weebly snapshot at /current/
-        run: cp -R ../current _site/current
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: jekyll/_site
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: current
       - id: deployment
         uses: actions/deploy-pages@v4
