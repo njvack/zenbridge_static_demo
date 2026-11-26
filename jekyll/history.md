@@ -1,10 +1,14 @@
 ---
-layout: default
 title: History
 heading: History of Zen Bridge
 permalink: /history.html
+sections:
+  - text: |
+      Zen Bridge started with a conversation between friends having coffee at a local coffee shop in 2006. The idea to form a group quickly became a reality, and Zen Bridge Community was created.
+
+      After 20 years and a name change to Zen Bridge Stillwater Meditation Center, our intention remains rooted in a desire to offer a space where people in the St. Croix Valley can come together to practice meditation and study Zen Buddhist teachings.
+    image:
+      src: assets/images/coffee.jpg
+      alt: A cup of coffee with latte art on a wooden table
+      position: left
 ---
-
-Zen Bridge started with a conversation between friends having coffee at a local coffee shop in 2006. The idea to form a group quickly became a reality, and Zen Bridge Community was created.
-
-After 20 years and a name change to Zen Bridge Stillwater Meditation Center, our intention remains rooted in a desire to offer a space where people in the St. Croix Valley can come together to practice meditation and study Zen Buddhist teachings.

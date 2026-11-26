@@ -1,61 +1,109 @@
 # Pages CMS configuration (https://pagescms.org).
 # Lets volunteers edit the Jekyll site in jekyll/ through web forms.
+# Each page is a list of sections; see jekyll/README.md.
+
+settings:
+  content:
+    merge: true   # keep settings this file doesn't list (layout, permalink…)
+  commit:
+    templates:
+      update: "Update {filename} (via Pages CMS, {userName})"
 
 media:
   input: jekyll/assets/images
   output: assets/images
   categories: [image]
+  rename: safe
+
+components:
+  section:
+    label: Sections
+    description: The page is built from these blocks, top to bottom. Drag to reorder.
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: "{heading}"
+    fields:
+      - name: heading
+        label: Heading
+        type: string
+        description: Optional. Shown as a section heading.
+      - name: text
+        label: Text
+        type: rich-text
+        options:
+          switcher: false
+          media: false
+      - name: image
+        label: Photo
+        type: object
+        fields:
+          - name: src
+            label: Image
+            type: image
+          - name: alt
+            label: Description for screen readers
+            type: string
+            description: Say what the photo shows, in a short sentence. Leave empty only for purely decorative images.
+          - name: caption
+            label: Caption
+            type: string
+            description: Optional. Shown under the photo.
+          - name: position
+            label: Where the photo goes
+            type: select
+            options:
+              values:
+                - { name: right, label: Beside the text, on the right }
+                - { name: left, label: Beside the text, on the left }
+                - { name: above, label: Above the text }
+                - { name: below, label: Below the text }
+      - name: feature
+        label: Built-in content
+        type: select
+        description: Adds content that is kept up to date elsewhere (events, board members, contact details).
+        options:
+          placeholder: None
+          values:
+            - { name: events, label: Upcoming events list }
+            - { name: board, label: Board members list }
+            - { name: donate, label: Donate button and QR code }
+            - { name: visit, label: Addresses and map link }
+      - name: style
+        label: Style
+        type: select
+        options:
+          placeholder: Normal
+          values:
+            - { name: plain, label: Normal }
+            - { name: centered, label: Centered }
+            - { name: highlight, label: Highlighted (purple box) }
 
 content:
   - name: pages
     label: Pages
     type: group
     items:
-      - name: home
-        label: Home
-        type: file
-        path: jekyll/index.md
-        fields:
-          - { name: title, label: Menu and tab title, type: string, required: true }
-          - { name: heading, label: Page heading, type: string }
-          - { name: lead, label: Introduction (shown under the heading), type: text }
-          - name: callout
-            label: Highlighted box (bottom of the page)
-            type: object
-            fields:
-              - { name: heading, label: Heading, type: string }
-              - { name: text, label: Text, type: rich-text }
-          - { name: body, label: Page content, type: rich-text }
-          - { name: layout, type: string, hidden: true }
-          - { name: hero, type: boolean, hidden: true }
-      - name: mission-values
-        label: Mission & Values
-        type: file
-        path: jekyll/mission--values.md
-        fields: &page_fields
-          - { name: title, label: Menu and tab title, type: string, required: true }
-          - { name: heading, label: Page heading (if different from the title), type: string }
-          - { name: lead, label: Introduction (shown under the heading), type: text }
-          - { name: body, label: Page content, type: rich-text }
-          - { name: layout, type: string, hidden: true }
-          - { name: permalink, type: string, hidden: true }
-      - { name: history, label: History, type: file, path: jekyll/history.md, fields: *page_fields }
-      - { name: board-page, label: Board of Directors, description: "The list of members is under Board members.", type: file, path: jekyll/board-of-directors.md, fields: *page_fields }
-      - { name: teachers, label: Teachers, type: file, path: jekyll/teachers.md, fields: *page_fields }
-      - { name: activities, label: Activities, description: "Events are edited under Upcoming events.", type: file, path: jekyll/activities.md, fields: *page_fields }
-      - { name: giving, label: Giving, description: "The donate button, QR code and EIN are added automatically.", type: file, path: jekyll/giving.md, fields: *page_fields }
-      - { name: contact, label: Contact Us, description: "Addresses and the map come from Site settings.", type: file, path: jekyll/contact-us.md, fields: *page_fields }
+      - { name: home, label: Home, type: file, path: jekyll/index.md, fields: [ { name: title, label: Page name (browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: mission-values, label: Mission & Values, type: file, path: jekyll/mission--values.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: history, label: History, type: file, path: jekyll/history.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: board-page, label: Board of Directors, description: "Members are edited under Board members.", type: file, path: jekyll/board-of-directors.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: teachers, label: Teachers, type: file, path: jekyll/teachers.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: activities, label: Activities, description: "Events are edited under Upcoming events.", type: file, path: jekyll/activities.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: giving, label: Giving, type: file, path: jekyll/giving.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
+      - { name: contact, label: Contact Us, description: "Addresses come from Site settings.", type: file, path: jekyll/contact-us.md, fields: [ { name: title, label: Page name (menu and browser tab), type: string, required: true }, { name: heading, label: Page heading, type: string }, { name: lead, label: Introduction, type: text }, { name: sections, component: section } ] }
 
   - name: events
     label: Upcoming events
-    description: Shown on the Activities page, in this order. Remove events once they have passed.
+    description: Shown wherever a section uses "Upcoming events list" (the Activities page). Remove events once they have passed.
     type: file
     path: jekyll/_data/events.yml
     list: true
     fields:
       - { name: title, label: Event, type: string, required: true }
-      - { name: when, label: When, type: string, required: true }
-      - { name: details, label: Details, type: rich-text }
+      - { name: when, label: When, type: string, required: true, description: "Written the way you want it to read, e.g. Dec 11–12" }
+      - { name: details, label: Details, type: rich-text, options: { switcher: false, media: false } }
 
   - name: board
     label: Board members
@@ -75,7 +123,7 @@ content:
     list: true
     fields:
       - { name: title, label: Label, type: string, required: true }
-      - { name: url, label: Link (e.g. /giving.html), type: string }
+      - { name: url, label: Link, type: string, description: "The page address, e.g. /giving.html" }
       - name: children
         label: Sub-items
         type: object

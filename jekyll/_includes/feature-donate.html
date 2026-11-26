@@ -1,0 +1,9 @@
+{% comment %} Donate button, QR code and tax note, from _data/contact.yml {% endcomment %}
+{% assign c = site.data.contact %}
+<div class="donate">
+  <p><a class="button" href="{{ c.donate_url }}">Donate with PayPal</a></p>
+  <p>Or scan this QR code with your phone:</p>
+  <img class="donate__qr" src="{{ '/assets/images/donate-qr-code.png' | relative_url }}" width="209" height="209"
+       alt="QR code that opens the Zen Bridge PayPal donation page">
+  <p class="donate__note">Zen Bridge Stillwater Meditation Center is a tax-exempt 501(c)(3) nonprofit organization, and contributions are tax-deductible as allowed by law. Our EIN is {{ c.ein }}.</p>
+</div>

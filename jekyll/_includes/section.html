@@ -1,0 +1,39 @@
+{% comment %}
+  One block of page content. Every part is optional:
+    heading   section heading
+    text      Markdown text
+    image     { src, alt, caption, position: right | left | above | below }
+    feature   built-in content: events | board | donate | visit
+    style     plain | centered | highlight
+{% endcomment %}
+{% assign s = include.section %}
+{% assign img = s.image %}
+{% assign has_image = false %}
+{% if img and img.src and img.src != "" %}{% assign has_image = true %}{% endif %}
+{% assign position = img.position | default: "right" %}
+{% assign style = s.style | default: "plain" %}
+
+<section class="section section--{{ style }}{% if has_image %} section--image-{{ position }}{% endif %}"
+         {% if s.heading %}aria-labelledby="section-{{ include.index }}"{% endif %}>
+  <div class="section__body">
+    {% if s.heading and s.heading != "" %}
+      <h2 class="section__heading" id="section-{{ include.index }}">{{ s.heading }}</h2>
+    {% endif %}
+    {% if s.text and s.text != "" %}
+      <div class="prose">{{ s.text | markdownify }}</div>
+    {% endif %}
+    {% case s.feature %}
+      {% when "events" %}{% include feature-events.html %}
+      {% when "board" %}{% include feature-board.html %}
+      {% when "donate" %}{% include feature-donate.html %}
+      {% when "visit" %}{% include feature-visit.html %}
+    {% endcase %}
+  </div>
+
+  {% if has_image %}
+    <figure class="section__figure">
+      <img src="{{ img.src | relative_url }}" alt="{{ img.alt | default: '' | escape }}" loading="lazy">
+      {% if img.caption and img.caption != "" %}<figcaption>{{ img.caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+</section>

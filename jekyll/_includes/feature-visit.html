@@ -1,0 +1,23 @@
+{% comment %} Addresses and a map link, from _data/contact.yml {% endcomment %}
+{% assign c = site.data.contact %}
+<div class="visit">
+  <div class="visit__addresses">
+    <div>
+      <h3>By mail</h3>
+      <address>
+        {% for line in c.mailing_address %}{{ line }}{% unless forloop.last %}<br>{% endunless %}
+        {% endfor %}
+      </address>
+      <p>Email: <a href="mailto:{{ c.email }}">{{ c.email }}</a></p>
+    </div>
+    <div>
+      <h3>We meet at</h3>
+      <address>
+        <a href="{{ c.meeting_place.map_url }}">{{ c.meeting_place.name }}</a><br>
+        {{ c.meeting_place.street }}<br>
+        {{ c.meeting_place.city }}
+      </address>
+    </div>
+  </div>
+  <p><a href="{{ c.meeting_place.map_url }}">Open {{ c.meeting_place.name }} in Google Maps</a></p>
+</div>

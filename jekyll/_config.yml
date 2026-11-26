@@ -20,3 +20,11 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+
+# Every page uses the default layout unless it says otherwise.
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default

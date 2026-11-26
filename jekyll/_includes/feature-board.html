@@ -1,12 +1,7 @@
----
-layout: default
----
-{{ content }}
-
-{% comment %} Board members come from _data/board.yml {% endcomment %}
+{% comment %} Board members, from _data/board.yml {% endcomment %}
 <ul class="people">
   {% for person in site.data.board %}
-  <li>
+  <li class="people__item">
     <span class="people__name">{{ person.name }}</span>
     <span class="people__role">{{ person.role }}</span>
   </li>
