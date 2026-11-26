@@ -1,0 +1,22 @@
+# Site-wide settings. Restart `jekyll serve` after editing this file.
+title: Zen Bridge Stillwater Meditation Center
+short_title: Zen Bridge
+description: >-
+  Zen Bridge is a Soto Zen Buddhist practice center in the Dainin Katagiri
+  lineage, in Stillwater, Minnesota.
+url: "https://www.zenbridge.org"
+baseurl: ""
+lang: en-US
+
+# Contact details (email, addresses, Zoom and donate links) are in
+# _data/contact.yml.
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,0 +1,105 @@
+# Pages CMS configuration (https://pagescms.org).
+# Lets volunteers edit the Jekyll site in jekyll/ through web forms.
+
+media:
+  input: jekyll/assets/images
+  output: assets/images
+  categories: [image]
+
+content:
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: home
+        label: Home
+        type: file
+        path: jekyll/index.md
+        fields:
+          - { name: title, label: Menu and tab title, type: string, required: true }
+          - { name: heading, label: Page heading, type: string }
+          - { name: lead, label: Introduction (shown under the heading), type: text }
+          - name: callout
+            label: Highlighted box (bottom of the page)
+            type: object
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: text, label: Text, type: rich-text }
+          - { name: body, label: Page content, type: rich-text }
+          - { name: layout, type: string, hidden: true }
+          - { name: hero, type: boolean, hidden: true }
+      - name: mission-values
+        label: Mission & Values
+        type: file
+        path: jekyll/mission--values.md
+        fields: &page_fields
+          - { name: title, label: Menu and tab title, type: string, required: true }
+          - { name: heading, label: Page heading (if different from the title), type: string }
+          - { name: lead, label: Introduction (shown under the heading), type: text }
+          - { name: body, label: Page content, type: rich-text }
+          - { name: layout, type: string, hidden: true }
+          - { name: permalink, type: string, hidden: true }
+      - { name: history, label: History, type: file, path: jekyll/history.md, fields: *page_fields }
+      - { name: board-page, label: Board of Directors, description: "The list of members is under Board members.", type: file, path: jekyll/board-of-directors.md, fields: *page_fields }
+      - { name: teachers, label: Teachers, type: file, path: jekyll/teachers.md, fields: *page_fields }
+      - { name: activities, label: Activities, description: "Events are edited under Upcoming events.", type: file, path: jekyll/activities.md, fields: *page_fields }
+      - { name: giving, label: Giving, description: "The donate button, QR code and EIN are added automatically.", type: file, path: jekyll/giving.md, fields: *page_fields }
+      - { name: contact, label: Contact Us, description: "Addresses and the map come from Site settings.", type: file, path: jekyll/contact-us.md, fields: *page_fields }
+
+  - name: events
+    label: Upcoming events
+    description: Shown on the Activities page, in this order. Remove events once they have passed.
+    type: file
+    path: jekyll/_data/events.yml
+    list: true
+    fields:
+      - { name: title, label: Event, type: string, required: true }
+      - { name: when, label: When, type: string, required: true }
+      - { name: details, label: Details, type: rich-text }
+
+  - name: board
+    label: Board members
+    description: Shown on the Board of Directors page, in this order.
+    type: file
+    path: jekyll/_data/board.yml
+    list: true
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: role, label: Role, type: string, required: true }
+
+  - name: navigation
+    label: Menu
+    description: The main menu. An item with sub-items becomes a drop-down and needs no link of its own.
+    type: file
+    path: jekyll/_data/navigation.yml
+    list: true
+    fields:
+      - { name: title, label: Label, type: string, required: true }
+      - { name: url, label: Link (e.g. /giving.html), type: string }
+      - name: children
+        label: Sub-items
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Label, type: string, required: true }
+          - { name: url, label: Link, type: string, required: true }
+
+  - name: settings
+    label: Site settings
+    description: Contact details used across the site.
+    type: file
+    path: jekyll/_data/contact.yml
+    fields:
+      - { name: email, label: Contact email, type: string, required: true }
+      - { name: zoom_url, label: Zoom link, type: string }
+      - { name: donate_url, label: PayPal donate link, type: string }
+      - { name: mailing_address, label: Mailing address (one line per entry), type: string, list: true }
+      - name: meeting_place
+        label: Where we meet
+        type: object
+        fields:
+          - { name: name, label: Place name, type: string }
+          - { name: street, label: Street, type: string }
+          - { name: city, label: City, state and ZIP, type: string }
+          - { name: map_url, label: Google Maps link, type: string }
+      - { name: ein, label: EIN, type: string }

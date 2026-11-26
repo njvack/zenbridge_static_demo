@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<section class="donate" aria-labelledby="donate-heading">
+  <h2 id="donate-heading">How to give</h2>
+  <p><a class="button" href="{{ site.data.contact.donate_url }}">Donate with PayPal</a></p>
+  <p>Or scan this QR code with your phone:</p>
+  <img src="{{ '/assets/images/donate-qr-code.png' | relative_url }}" width="209" height="209"
+       alt="QR code that opens the Zen Bridge PayPal donation page">
+  <p>Zen Bridge Stillwater Meditation Center is a tax-exempt 501(c)(3) nonprofit organization, and contributions are tax-deductible as allowed by law. Our EIN is {{ site.data.contact.ein }}.</p>
+</section>
+
+{{ content }}

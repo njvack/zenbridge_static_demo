@@ -1,0 +1,11 @@
+---
+layout: default
+---
+{{ content }}
+
+{% if page.callout %}
+<section class="callout" aria-labelledby="callout-heading">
+  <h2 id="callout-heading">{{ page.callout.heading }}</h2>
+  {{ page.callout.text | markdownify }}
+</section>
+{% endif %}
