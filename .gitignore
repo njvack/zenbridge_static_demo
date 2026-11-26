@@ -1,0 +1,5 @@
+jekyll/_site/
+jekyll/.jekyll-cache/
+jekyll/.bundle/
+jekyll/vendor/
+.DS_Store
