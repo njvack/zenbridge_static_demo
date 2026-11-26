@@ -1,0 +1,17 @@
+# Upcoming events, shown on the Activities page in this order.
+# Remove an entry once it has passed.
+#   title:  name of the event (required)
+#   when:   date or dates, as you want them to read (required)
+#   details: optional extra sentence; Markdown links are allowed
+- title: Deepening your practice / Jukai
+  when: 1-year process begins with the practice period
+  details: For more information, email [info@zenbridge.org](mailto:info@zenbridge.org).
+- title: Board Meeting
+  when: Nov 11 (time TBD)
+  details: Online only, via the [Zen Bridge Zoom link](https://us02web.zoom.us/j/81010406991?pwd=U3A4WmV5dVVDV1lLd093ZHp5SEIrdz09).
+- title: Rohatsu Retreat
+  when: Dec 11–12
+  details: See the [home page](./#rohatsu-retreat-2026) for the schedule and how to register.
+- title: Winter Break
+  when: Dec 21 – Jan 4
+  details: No Saturday or weekday programming.

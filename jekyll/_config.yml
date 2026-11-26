@@ -1,0 +1,34 @@
+# Site-wide settings. Restart `jekyll serve` after editing this file.
+title: Zen Bridge Stillwater Meditation Center
+short_title: Zen Bridge
+description: >-
+  Zen Bridge is a Soto Zen Buddhist practice center in the Dainin Katagiri
+  lineage, in Stillwater, Minnesota.
+url: "https://www.zenbridge.org"
+baseurl: ""
+lang: en-US
+
+# Contact details used across the site.
+email: info@zenbridge.org
+zoom_url: "https://us02web.zoom.us/j/81010406991?pwd=U3A4WmV5dVVDV1lLd093ZHp5SEIrdz09"
+donate_url: "https://www.paypal.com/donate/?hosted_button_id=U4DZKTL5C2AHW"
+mailing_address:
+  - Zen Bridge Stillwater Meditation Center
+  - 5865 Neal Ave N #302
+  - Stillwater, MN 55082
+meeting_place:
+  name: Ascension Episcopal Church
+  street: 214 3rd Street N
+  city: Stillwater, MN 55082
+  map_url: "https://www.google.com/maps/place/Ascension+Episcopal+Church/@45.057133,-92.8120847,17z"
+ein: 33-1979962
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
