@@ -9,7 +9,7 @@ Every page is a list of **sections**, stacked top to bottom. A section can have 
 - **Heading**
 - **Text**, written in the visual editor
 - **Photo**, with a description for screen readers, an optional caption, and where it goes: beside the text (right or left), above it, or below it. Beside-the-text photos stack under or over the text on phones.
-- **Built-in content**, kept up to date elsewhere: the upcoming events list, the board members list, the donate button and QR code, or the addresses and map link
+- **Built-in content**, kept up to date elsewhere: the upcoming events list, the board members list, the donate button and QR code, or the addresses and map
 - **Style**: normal, centered, or highlighted (the purple box on the home page)
 
 Above the sections, each page has a **page name** (used in the browser tab), an optional **heading** if the big title should say something else, and an optional one-sentence **introduction**.
@@ -54,7 +54,7 @@ Page addresses keep the old Weebly URLs (`/activities1.html` etc.) through each 
 - In section text, use the editor's heading levels below the section heading (Heading 3), not above it.
 - Every photo needs a description for people using screen readers. Leave it empty only for purely decorative images.
 - Write link text that makes sense on its own ("Zen Bridge Zoom link", not "click here").
-- Everything is self-hosted. Don't paste in embeds or images from other websites; upload images to the media library instead.
+- Everything except the Google Map on the Contact page is self-hosted. Don't paste in embeds or images from other websites; upload images to the media library instead.
 
 ## Editing on GitHub
 

@@ -1,4 +1,4 @@
-{% comment %} Addresses and a map link, from _data/contact.yml {% endcomment %}
+{% comment %} Addresses and an embedded Google Map, from _data/contact.yml {% endcomment %}
 {% assign c = site.data.contact %}
 <div class="visit">
   <div class="visit__addresses">
@@ -19,5 +19,8 @@
       </address>
     </div>
   </div>
+  <iframe class="map" title="Map showing {{ c.meeting_place.name }}, {{ c.meeting_place.street }}"
+          src="https://www.google.com/maps?q={{ c.meeting_place.name | append: ', ' | append: c.meeting_place.street | append: ', ' | append: c.meeting_place.city | url_encode }}&amp;output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   <p><a href="{{ c.meeting_place.map_url }}">Open {{ c.meeting_place.name }} in Google Maps</a></p>
 </div>

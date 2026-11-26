@@ -69,7 +69,7 @@ components:
             - { name: events, label: Upcoming events list }
             - { name: board, label: Board members list }
             - { name: donate, label: Donate button and QR code }
-            - { name: visit, label: Addresses and map link }
+            - { name: visit, label: Addresses and map }
       - name: style
         label: Style
         type: select
